@@ -19,7 +19,7 @@ The contributions we made as part of our work were merged as described on [the m
 
   - [TorNetTools](https://github.com/shadow/tornettools) at commit [`c126160d5f2e16bff30e623b3a9f830e43801b5c`](https://github.com/shadow/tornettools/commit/c126160d5f2e16bff30e623b3a9f830e43801b5c)
   - [Shadow](https://github.com/shadow/shadow) at commit [`a7b7d49168d398b074c6ce38e203c1ef980fce51`](https://github.com/shadow/shadow/commit/a7b7d49168d398b074c6ce38e203c1ef980fce51)
-  - [TGen](https://github.com/shadow/tgen) at commit [`104cc7df2fe40e23456da52191e65d6a43e85b3c`](https://github.com/shadow/tgen/commit/104cc7df2fe40e23456da52191e65d6a43e85b3c)
+  - [TGen](https://github.com/shadow/tgen) at commit [`8825a1500cda63e81499be95a60d2783267c39cd`](https://github.com/shadow/tgen/commit/8825a1500cda63e81499be95a60d2783267c39cd)
   - [OnionTrace](https://github.com/shadow/oniontrace) at commit [`6c467177306226bcaa82f73be4da388916f81198`](https://github.com/shadow/oniontrace/commit/6c467177306226bcaa82f73be4da388916f81198)
   - [Shadow-plugin-tor]() at commit [`3bb048d754833912a00576ddb072dd1ef644e9c8`](https://github.com/shadow/shadow-plugin-tor/commit/3bb048d754833912a00576ddb072dd1ef644e9c8)
   - [Tor]() at commit [`5030edfb534245ed3f7e6b476f38a706247f3cb8`](https://gitweb.torproject.org/tor.git/commit/?id=5030edfb534245ed3f7e6b476f38a706247f3cb8) (v0.3.5.8) with [this patch](/process/tor_neverenough.patch) applied
@@ -38,13 +38,15 @@ cd tornettools
 git checkout -b nevenuf c126160d5f2e16bff30e623b3a9f830e43801b5c
 pip3 install -r requirements.txt
 pip3 install -I .
+cd ..
 
 git clone https://github.com/shadow/tgen
 cd tgen
-git checkout -b nevenuf 104cc7df2fe40e23456da52191e65d6a43e85b3c
+git checkout -b nevenuf 8825a1500cda63e81499be95a60d2783267c39cd
 cd tools
 pip3 install -r requirements.txt
 pip3 install -I .
+cd ../..
 
 git clone https://github.com/shadow/oniontrace
 cd oniontrace
@@ -52,6 +54,7 @@ git checkout -b nevenuf 6c467177306226bcaa82f73be4da388916f81198
 cd tools
 pip3 install -r requirements.txt
 pip3 install -I .
+cd ../..
 ```
 
 ### Tor Model Configs
@@ -60,7 +63,7 @@ Generating Tor models involves staging and generation.
 
 #### Staging
 
-We first run the staging phase by downloading Tor consensus, server descriptor, and Tor performance results and processing them as described in the [TorNetTools staging instructions](https://github.com/shadow/tornettools/blob/fc17c96cf37dc01a03ae0d84315b3f42157066c0/README.md). Here we provide the staging files that we produced, covering Tor network state during the period from `2019-01-01` through `2019-01-31`:
+We first run the staging phase by downloading Tor consensus, server descriptor, and Tor performance results and processing them as described in the [TorNetTools staging instructions](https://github.com/shadow/tornettools/blob/c126160d5f2e16bff30e623b3a9f830e43801b5c/README.md). Here we provide the staging files that we produced, covering Tor network state during the period from `2019-01-01` through `2019-01-31`:
 
   - [relayinfo_staging_2019-01-01--2019-02-01.json](/relayinfo_staging_2019-01-01--2019-02-01.json)
   - [userinfo_staging_2019-01-01--2019-02-01.json](/userinfo_staging_2019-01-01--2019-02-01.json)
@@ -97,6 +100,7 @@ done
 ```
 
 Notes:
+- The `tornetgen` tool shown above was later renamed to `tornettools`.
 - `tmodel-ccs2018.github.io` refers to a clone of [this github repo](https://github.com/tmodel-ccs2018/tmodel-ccs2018.github.io.git) from previous work.
 - In the generated `shadow.config.xml` files, you will need to update the atlas path to point to your own local copy of [this atlas topology file](https://tmodel-ccs2018.github.io/data/shadow/network/atlas-lossless.201801.shadow113.graphml.xml.xz).
 
