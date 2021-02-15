@@ -1,0 +1,61 @@
+diff --git a/src/core/mainloop/mainloop.c b/src/core/mainloop/mainloop.c
+index 6e2b300..e82c77a 100644
+--- a/src/core/mainloop/mainloop.c
++++ b/src/core/mainloop/mainloop.c
+@@ -894,6 +894,21 @@ conn_read_callback(evutil_socket_t fd, short event, void *_conn)
+   }
+   assert_connection_ok(conn, time(NULL));
+ 
++  if (conn->marked_for_close && connection_is_reading(conn)) {
++      /* Libevent says we can read, but we are marked so we will never try
++       * to read again. We will try to close the connection below inside of
++       * close_closeable_connections(), but let's make sure not to cause
++       * Libevent to spin on conn_read_callback() while we wait for the
++       * socket to let us flush to it.*/
++      connection_stop_reading(conn);
++
++      /* Now, if we still have data to flush, then make sure Libevent tells
++       * us when the conn will allow us to write the bytes. */
++      if (connection_wants_to_flush(conn) && !connection_is_writing(conn)) {
++          connection_start_writing(conn);
++      }
++  }
++
+   if (smartlist_len(closeable_connection_lst))
+     close_closeable_connections();
+ }
+diff --git a/src/feature/control/control.c b/src/feature/control/control.c
+index cc7ecff..fac51eb 100644
+--- a/src/feature/control/control.c
++++ b/src/feature/control/control.c
+@@ -5904,16 +5904,28 @@ control_event_stream_status(entry_connection_t *conn, stream_status_event_t tp,
+       purpose = " PURPOSE=USER";
+   }
+ 
++  /* send socks username along with stream events. */
++  char user[64];
++  int do_user = (conn->socks_request && conn->socks_request->username) ? 1 : 0;
++
++  if(do_user) {
++    char* u_null_term = tor_memdup_nulterm(conn->socks_request->username,
++        conn->socks_request->usernamelen);
++    tor_snprintf(user, 64, " USERNAME=%s", u_null_term);
++    free(u_null_term);
++  }
++
+   circ = circuit_get_by_edge_conn(ENTRY_TO_EDGE_CONN(conn));
+   if (circ && CIRCUIT_IS_ORIGIN(circ))
+     origin_circ = TO_ORIGIN_CIRCUIT(circ);
+   send_control_event(EVENT_STREAM_STATUS,
+-                        "650 STREAM %"PRIu64" %s %lu %s%s%s%s\r\n",
++                        "650 STREAM %"PRIu64" %s %lu %s%s%s%s%s\r\n",
+                      (ENTRY_TO_CONN(conn)->global_identifier),
+                      status,
+                         origin_circ?
+                            (unsigned long)origin_circ->global_identifier : 0ul,
+-                        buf, reason_buf, addrport_buf, purpose);
++                        buf, reason_buf, addrport_buf, purpose,
++                        do_user ? user : "");
+ 
+   /* XXX need to specify its intended exit, etc? */
+ 

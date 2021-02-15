@@ -1,0 +1,10 @@
+{
+  "ram": {
+    "max_bytes_used": 380527517696,
+    "max_gib_used": 354.3938674926758
+  },
+  "run_time": {
+    "human": "19:20:00",
+    "seconds": 69600.0
+  }
+}

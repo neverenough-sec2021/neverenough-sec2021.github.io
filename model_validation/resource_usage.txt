@@ -1,0 +1,8 @@
+Network size 0.31
+Max RAM usage is: 931.3227577209473
+Max bootstrap time is: 60168.792009
+Max total time is: 178346.132452
+Network size 1.0
+Max RAM usage is: 3.8623654134571552
+Max bootstrap time is: 247483.866428
+Max total time is: 712811.998598
