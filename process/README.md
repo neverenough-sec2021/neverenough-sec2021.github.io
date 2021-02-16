@@ -1,4 +1,4 @@
-### Overview
+### Process Overview
 
 This page provides some general details about our experimental process, including the exact versions of software we used, how we stage and generate Tor models, and how we process the output.
 
@@ -21,8 +21,8 @@ The contributions we made as part of our work were merged as described on [the m
   - [Shadow](https://github.com/shadow/shadow) at commit [`a7b7d49168d398b074c6ce38e203c1ef980fce51`](https://github.com/shadow/shadow/commit/a7b7d49168d398b074c6ce38e203c1ef980fce51)
   - [TGen](https://github.com/shadow/tgen) at commit [`8825a1500cda63e81499be95a60d2783267c39cd`](https://github.com/shadow/tgen/commit/8825a1500cda63e81499be95a60d2783267c39cd)
   - [OnionTrace](https://github.com/shadow/oniontrace) at commit [`6c467177306226bcaa82f73be4da388916f81198`](https://github.com/shadow/oniontrace/commit/6c467177306226bcaa82f73be4da388916f81198)
-  - [Shadow-plugin-tor]() at commit [`3bb048d754833912a00576ddb072dd1ef644e9c8`](https://github.com/shadow/shadow-plugin-tor/commit/3bb048d754833912a00576ddb072dd1ef644e9c8)
-  - [Tor]() at commit [`5030edfb534245ed3f7e6b476f38a706247f3cb8`](https://gitweb.torproject.org/tor.git/commit/?id=5030edfb534245ed3f7e6b476f38a706247f3cb8) (v0.3.5.8) with [this patch](/process/tor_neverenough.patch) applied
+  - [Shadow-plugin-tor](https://github.com/shadow/shadow-plugin-tor) at commit [`3bb048d754833912a00576ddb072dd1ef644e9c8`](https://github.com/shadow/shadow-plugin-tor/commit/3bb048d754833912a00576ddb072dd1ef644e9c8)
+  - [Tor](https://gitlab.com/torproject/tor) at commit [`5030edfb534245ed3f7e6b476f38a706247f3cb8`](https://gitweb.torproject.org/tor.git/commit/?id=5030edfb534245ed3f7e6b476f38a706247f3cb8) (v0.3.5.8) with [this patch](/process/tor_neverenough.patch) applied
 
 ### Setting up Python
 
@@ -70,7 +70,7 @@ We first run the staging phase by downloading Tor consensus, server descriptor, 
 
 #### Generation
 
-Given the above staging files, we can generate any number of Tor models. We use a script similar to the one below for all Tor model configuration bundles that we use in §4, §5, and §6 in the paper, where we modified the `n`, `l`, and `v` parameters (in the for loops) according to the specific requirements for each section of the paper.
+Given the above staging files, we can generate any number of Tor models. We use a script similar to the one below for all Tor model configuration bundles that we use in §4, §5, and §6 in the paper, where we modified the `n`, `l`, and `v` parameters (in the for loops) according to the specific requirements for each section of the paper. As written, the script below would generate far more networks than necessary.
 
 ```
 source ~/venvs/nevenufenv/bin/activate
@@ -104,7 +104,7 @@ Notes:
 - `tmodel-ccs2018.github.io` refers to a clone of [this github repo](https://github.com/tmodel-ccs2018/tmodel-ccs2018.github.io.git) from previous work.
 - In the generated `shadow.config.xml` files, you will need to update the atlas path to point to your own local copy of [this atlas topology file](https://tmodel-ccs2018.github.io/data/shadow/network/atlas-lossless.201801.shadow113.graphml.xml.xz).
 
-Unfortunately, we did not record the seeds that were used when generating the configs, so we cannot deterministically recreate them using [TorNetTools](https://github.com/shadow/tornettools). (The latest version of [TorNetTools](https://github.com/shadow/tornettools) has corrected this oversight.)
+Unfortunately, we did not record the seeds that were used when generating the configs, so we cannot deterministically recreate them using [TorNetTools](https://github.com/shadow/tornettools). (The latest version of TorNetTools has corrected this oversight.)
 
 The [model validation](/model_validation), [significance analysis](/significance_analysis), and [performance analysis](/performance_analysis) pages describe the generated Tor model configuration bundles included in this repository.
 
@@ -152,7 +152,7 @@ xzcat shadow.log.xz | pypy /home/rjansen/shadow/src/tools/parse-shadow.py -m 0 -
 
 #### Extraction
 
-In this phase, we extract visualization data from the parsing step to simplify our plotting scripts. The extraction scripts are provided in [the process directory in the repository](https://github.com/neverenough-sec2021/neverenough-sec2021.github.io/tree/main/process).
+In this phase, we extract visualization data from the parsing step to simplify our plotting scripts. The extraction scripts are provided in [the process directory in this repository](https://github.com/neverenough-sec2021/neverenough-sec2021.github.io/tree/main/process).
 
 ```
 source ~/venvs/nevenufenv/bin/activate
