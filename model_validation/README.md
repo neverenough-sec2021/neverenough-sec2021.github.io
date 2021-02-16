@@ -4,7 +4,7 @@ In §4 of our paper, we run some experiments to evaluate our modeling tools and 
 
 ### Tor Model Configs
 
-Our analysis included some results from simulations using Shadow. We generated ten 31% and three 100% Tor model configuration bundles using the process described on [the process page](/process), and provide the configs in the [the configs directory](https://github.com/neverenough-sec2021/neverenough-sec2021.github.io/tree/main/model_validation/configs). The model from previous work (CCS 2018) was taken from [here](https://tmodel-ccs2018.github.io/data/shadow/hosts/shadowtor-2000r-129419c-privcount-config.tar.xz).
+Our analysis included some results from simulations using Shadow. We generated ten 31% and three 100% Tor model configuration bundles using the process described on [the process page](/process), and provide the configs in the [the configs directory](https://github.com/neverenough-sec2021/neverenough-sec2021.github.io/tree/main/model_validation/configs). The CCS 2018 model was taken from [previous work](https://tmodel-ccs2018.github.io/data/shadow/hosts/shadowtor-2000r-129419c-privcount-config.tar.xz).
 
 The experiments with the 31% networks were run on `CentOS Linux release 7.6.1810 (Core)` using Kernel `4.4.178-1.el7.elrepo.x86_64 #1 SMP Wed Apr 3 05:46:30 EDT 2019 x86_64`.
 
@@ -78,7 +78,7 @@ done
 
 #### Tor Client Performance
 
-We also use some of the performance data visualized [here](https://metrics.torproject.org/torperf.html). The process for computing the metrics is documented by the Tor Project [here](https://metrics.torproject.org/reproducible-metrics.html#performance).
+We also use some of the performance data visualized on the [Tor metrics torperf page](https://metrics.torproject.org/torperf.html). The process for computing the metrics is documented by the Tor Project on [the reproducible metrics page](https://metrics.torproject.org/reproducible-metrics.html#performance).
 
 ```
 # Download the data from Tor

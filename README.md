@@ -5,7 +5,7 @@ This is the landing page for the following research publication:
 **Once is Never Enough: Foundations for Sound Statistical Inference in Tor Network Experimentation**  
 _Proceedings of [the 30th USENIX Security Symposium](https://www.usenix.org/conference/usenixsecurity21) (Sec 2021)_  
 by [Rob Jansen](https://www.robgjansen.com), Justin Tracey, and [Ian Goldberg](https://cs.uwaterloo.ca/~iang)  
-\[[Conference version here](https://www.robgjansen.com/publications/neverenough-sec2021.pdf)\] \[[Extended version here](https://arxiv.org/abs/2102.05196)\]
+\[[Conference version](https://www.robgjansen.com/publications/neverenough-sec2021.pdf)\] \[[Extended version](https://arxiv.org/abs/2102.05196)\]
 
 If you reference this paper or use any of the data or code provided on this site, please cite the paper. Here is a bibtex entry for latex users:
 
@@ -47,12 +47,12 @@ The general experimental process that we used during our research is described o
 
 #### Model Validation
 
-In §4 of our paper, we run some experiments to evaluate our modeling tools and Shadow improvements. More information about reproducing the analysis and graphs (in Figures 1, 2, and 3, and Table 2 in the paper) is available [here](/model_validation).
+In §4 of our paper, we run some experiments to evaluate our modeling tools and Shadow improvements. More information about reproducing the analysis and graphs (in Figures 1, 2, and 3, and Table 2 in the paper) is available on [the model validation page](/model_validation).
 
 #### Significance Analysis
 
-In §5 of our paper, we describe an analysis methodology that allows us to compute confidence intervals over a set of simulations results, in order to make more informed inferences about Tor network performance. More information about reproducing the analysis and graphs (in Figures 4, 5, and 6 in the paper) is available [here](/significance_analysis).
+In §5 of our paper, we describe an analysis methodology that allows us to compute confidence intervals over a set of simulations results, in order to make more informed inferences about Tor network performance. More information about reproducing the analysis and graphs (in Figures 4, 5, and 6 in the paper) is available on [the significance analysis page](/significance_analysis).
 
 #### Performance Analysis Case Study
 
-In §6 of our paper, we present the results of a case study of the effects of an increase in Tor usage on Tor client performance. More information about reproducing the analysis and graphs (in Figures 7 and 8 in the paper, and in Figures 9, 10, 11, and 12 in the full version) is available [here](/performance_analysis).
+In §6 of our paper, we present the results of a case study of the effects of an increase in Tor usage on Tor client performance. More information about reproducing the analysis and graphs (in Figures 7 and 8 in the paper, and in Figures 9, 10, 11, and 12 in the full version) is available on [the performance analysis page](/performance_analysis).
