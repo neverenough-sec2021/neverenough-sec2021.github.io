@@ -24,7 +24,17 @@ The contributions we made as part of our work were merged as described on [the m
   - [Shadow-plugin-tor](https://github.com/shadow/shadow-plugin-tor) at commit [`3bb048d754833912a00576ddb072dd1ef644e9c8`](https://github.com/shadow/shadow-plugin-tor/commit/3bb048d754833912a00576ddb072dd1ef644e9c8)
   - [Tor](https://gitlab.com/torproject/tor) at commit [`5030edfb534245ed3f7e6b476f38a706247f3cb8`](https://gitweb.torproject.org/tor.git/commit/?id=5030edfb534245ed3f7e6b476f38a706247f3cb8) (v0.3.5.8) with [this patch](/process/tor_neverenough.patch) applied
 
-### Setting up Python
+### Package Setup
+
+To run Shadow simulations, you will need to install Shadow and the other tools listed above following the respective installation guides distributed with each tool. To run the analysis explained on this site, the following packages are needed when using Ubuntu 18.04 LTS:
+
+```
+sudo apt-get install \
+  openssl libssl-dev libevent-dev build-essential automake zlib1g zlib1g-dev \
+  python3-venv dstat pypy texlive-latex-extra texlive-fonts-recommended dvipng cm-super
+```
+
+### Python Setup
 
 We used a variety of python modules to simplify our processing and visualization steps, which we installed into a virtual environment as follows:
 
